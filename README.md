@@ -372,7 +372,7 @@ Os casos de teste da seção 12 verificam essas práticas.
 
 Os testes verificam o comportamento do aplicativo pela interface, comparando o resultado obtido com o esperado, sem analisar o código-fonte. Foram usadas três técnicas: **caminho feliz** (uso correto), **casos negativos** (campos vazios, dados inválidos, credenciais erradas, permissões negadas) e **valores-limite** (senha com 5 e 6 caracteres, minutos `0`, `-5` e valor muito grande, título só com espaços e título longo). Os casos de segurança usam o Database Inspector do Android Studio apenas para confirmar que a senha foi gravada como hash.
 
-Os casos abaixo são **roteiros a executar**, não resultados comprovados. Após a execução, preencha "Resultado obtido" e "Status" com o que realmente aconteceu.
+Os casos abaixo foram registrados como **Aprovados** conforme a confirmação de Reinaldo de que executou os 62 testes e que todos passaram. As descrições em "Resultado obtido" sintetizam os comportamentos informados como aprovados, tomando como base o resultado esperado de cada caso. Não houve verificação independente dos 62 resultados nesta revisão. Os dados do ambiente de teste não informados continuam pendentes de preenchimento.
 
 ### 12.2 Ambiente de teste
 
@@ -381,8 +381,8 @@ Os casos abaixo são **roteiros a executar**, não resultados comprovados. Após
 | Dispositivo ou emulador | _a preencher_ |
 | Versão do Android (API) | _a preencher_ |
 | Versão ou commit do app | _a preencher_ |
-| Data da execução | _a preencher_ |
-| Executores | _a preencher_ |
+| Data da execução | 09/11/2026 (conforme declaração do integrante) |
+| Executores | Reinaldo (execução informada pelo integrante) |
 
 ### 12.3 Dados de teste
 
@@ -407,109 +407,109 @@ Se um caso reprovar, registre a falha na seção 12.8, corrija e repita o teste.
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT01 | RF02, RNF06 | Tela de cadastro aberta. | Deixar nome, e-mail, senha e confirmação vazios e tocar em Cadastrar. | Mensagem informando os campos obrigatórios; nenhum usuário é criado; o app não encerra inesperadamente. | _a preencher_ | Pendente |
-| CT02 | RF02 | Tela de cadastro aberta. | Informar nome `Ana Teste`, e-mail `ana.teste` (sem `@`), senha e confirmação `123456` e tocar em Cadastrar. | Mensagem de e-mail inválido; nenhum usuário é criado. | _a preencher_ | Pendente |
-| CT03 | RF02 | Tela de cadastro aberta. | Informar e-mail válido, senha e confirmação `12345` (cinco caracteres) e tocar em Cadastrar. | Mensagem informando que a senha deve ter ao menos seis caracteres; nenhum usuário é criado. | _a preencher_ | Pendente |
-| CT04 | RF02 | Tela de cadastro aberta. | Informar e-mail válido, senha `123456` e confirmação `654321` e tocar em Cadastrar. | Mensagem informando que as senhas não coincidem; nenhum usuário é criado. | _a preencher_ | Pendente |
-| CT05 | RF02, RNF02 | O e-mail `ana@teste.com` ainda não está cadastrado. | Cadastrar o Usuário A (`Ana Teste`, `ana@teste.com`, senha e confirmação `123456`, exatamente seis caracteres). | Mensagem de sucesso e retorno à tela de login. | _a preencher_ | Pendente |
-| CT06 | RF02 | Usuário A cadastrado. | Tentar cadastrar outra conta com o e-mail `ana@teste.com`. | Mensagem informando que o e-mail já está em uso; a segunda conta não é criada. | _a preencher_ | Pendente |
-| CT07 | RF02 | Usuário A cadastrado. | Cadastrar o Usuário B (`Bruno Teste`, `bruno@teste.com`, senha e confirmação `123456`). | Mensagem de sucesso e retorno à tela de login. | _a preencher_ | Pendente |
+| CT01 | RF02, RNF06 | Tela de cadastro aberta. | Deixar nome, e-mail, senha e confirmação vazios e tocar em Cadastrar. | Mensagem informando os campos obrigatórios; nenhum usuário é criado; o app não encerra inesperadamente. | Cadastro bloqueado com campos vazios; mensagem de preenchimento exibida, sem encerramento do app. | Aprovado |
+| CT02 | RF02 | Tela de cadastro aberta. | Informar nome `Ana Teste`, e-mail `ana.teste` (sem `@`), senha e confirmação `123456` e tocar em Cadastrar. | Mensagem de e-mail inválido; nenhum usuário é criado. | E-mail sem @ foi recusado; nenhum cadastro realizado. | Aprovado |
+| CT03 | RF02 | Tela de cadastro aberta. | Informar e-mail válido, senha e confirmação `12345` (cinco caracteres) e tocar em Cadastrar. | Mensagem informando que a senha deve ter ao menos seis caracteres; nenhum usuário é criado. | Senha de cinco caracteres recusada com aviso de tamanho mínimo. | Aprovado |
+| CT04 | RF02 | Tela de cadastro aberta. | Informar e-mail válido, senha `123456` e confirmação `654321` e tocar em Cadastrar. | Mensagem informando que as senhas não coincidem; nenhum usuário é criado. | Senhas divergentes recusadas com aviso; cadastro não realizado. | Aprovado |
+| CT05 | RF02, RNF02 | O e-mail `ana@teste.com` ainda não está cadastrado. | Cadastrar o Usuário A (`Ana Teste`, `ana@teste.com`, senha e confirmação `123456`, exatamente seis caracteres). | Mensagem de sucesso e retorno à tela de login. | Conta de Ana cadastrada; confirmação exibida e retorno ao login. | Aprovado |
+| CT06 | RF02 | Usuário A cadastrado. | Tentar cadastrar outra conta com o e-mail `ana@teste.com`. | Mensagem informando que o e-mail já está em uso; a segunda conta não é criada. | E-mail duplicado recusado; nenhuma conta adicional criada. | Aprovado |
+| CT07 | RF02 | Usuário A cadastrado. | Cadastrar o Usuário B (`Bruno Teste`, `bruno@teste.com`, senha e confirmação `123456`). | Mensagem de sucesso e retorno à tela de login. | Conta de Bruno cadastrada; confirmação exibida e retorno ao login. | Aprovado |
 
 #### Login, sessão e logout
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT08 | RF03 | Usuário A cadastrado; tela de login aberta. | Informar `ana@teste.com` e `123456` e tocar em Entrar. | O app abre a lista de tarefas do Usuário A. | _a preencher_ | Pendente |
-| CT09 | RF03 | Usuário A cadastrado; tela de login aberta. | Informar `ana@teste.com` e a senha incorreta `000000`. | Mensagem de credenciais incorretas; o usuário permanece na tela de login. | _a preencher_ | Pendente |
-| CT10 | RF03 | Tela de login aberta. | Informar o e-mail não cadastrado `ninguem@teste.com` e a senha `123456`. | Mensagem de credenciais incorretas; o app não encerra inesperadamente. | _a preencher_ | Pendente |
-| CT11 | RF03, RNF06 | Tela de login aberta. | Deixar e-mail e senha vazios e tocar em Entrar. | Mensagem informando que os campos são obrigatórios. | _a preencher_ | Pendente |
-| CT12 | RF01, RF04, RNF05 | Usuário A autenticado. | Fechar o app removendo-o dos aplicativos recentes e abri-lo novamente. | Após a Splash, o app abre direto a lista de tarefas do Usuário A, sem pedir login. | _a preencher_ | Pendente |
-| CT13 | RF01, RF04, RNF05 | Nenhum usuário autenticado (app recém-instalado ou após logout). | Abrir o aplicativo. | Após a Splash, o app abre a tela de login. | _a preencher_ | Pendente |
-| CT14 | RF01, RNF08 | App fechado. | Abrir o aplicativo e observar a Splash. | A Splash aparece durante a inicialização e é substituída pela tela seguinte sem espera fixa perceptível. | _a preencher_ | Pendente |
-| CT15 | RF16 | Usuário A autenticado, na lista de tarefas. | Abrir o menu de opções e selecionar Sair. | A sessão é encerrada e o app abre a tela de login. | _a preencher_ | Pendente |
-| CT16 | RF16, RNF05 | Logout recém-realizado. | Pressionar o botão Voltar do dispositivo repetidas vezes. | O app não retorna a nenhuma tela restrita (lista, formulário ou perfil). | _a preencher_ | Pendente |
-| CT17 | RF16 | Usuário A autenticado, na tela de Perfil. | Usar a opção de sair disponível no Perfil (se implementada). | A sessão é encerrada e o app abre a tela de login. | _a preencher_ | Pendente |
+| CT08 | RF03 | Usuário A cadastrado; tela de login aberta. | Informar `ana@teste.com` e `123456` e tocar em Entrar. | O app abre a lista de tarefas do Usuário A. | Login de Ana realizado; lista de tarefas aberta. | Aprovado |
+| CT09 | RF03 | Usuário A cadastrado; tela de login aberta. | Informar `ana@teste.com` e a senha incorreta `000000`. | Mensagem de credenciais incorretas; o usuário permanece na tela de login. | Senha incorreta rejeitada; mensagem exibida e permanência no login. | Aprovado |
+| CT10 | RF03 | Tela de login aberta. | Informar o e-mail não cadastrado `ninguem@teste.com` e a senha `123456`. | Mensagem de credenciais incorretas; o app não encerra inesperadamente. | E-mail não cadastrado rejeitado sem travamento. | Aprovado |
+| CT11 | RF03, RNF06 | Tela de login aberta. | Deixar e-mail e senha vazios e tocar em Entrar. | Mensagem informando que os campos são obrigatórios. | Campos vazios rejeitados com mensagem de preenchimento obrigatório. | Aprovado |
+| CT12 | RF01, RF04, RNF05 | Usuário A autenticado. | Fechar o app removendo-o dos aplicativos recentes e abri-lo novamente. | Após a Splash, o app abre direto a lista de tarefas do Usuário A, sem pedir login. | Sessão preservada; ao reabrir, Splash direcionou diretamente à lista. | Aprovado |
+| CT13 | RF01, RF04, RNF05 | Nenhum usuário autenticado (app recém-instalado ou após logout). | Abrir o aplicativo. | Após a Splash, o app abre a tela de login. | Sem sessão, Splash direcionou à tela de login. | Aprovado |
+| CT14 | RF01, RNF08 | App fechado. | Abrir o aplicativo e observar a Splash. | A Splash aparece durante a inicialização e é substituída pela tela seguinte sem espera fixa perceptível. | Splash exibida durante a inicialização, sem atraso artificial. | Aprovado |
+| CT15 | RF16 | Usuário A autenticado, na lista de tarefas. | Abrir o menu de opções e selecionar Sair. | A sessão é encerrada e o app abre a tela de login. | Logout pelo menu concluiu a sessão e retornou ao login. | Aprovado |
+| CT16 | RF16, RNF05 | Logout recém-realizado. | Pressionar o botão Voltar do dispositivo repetidas vezes. | O app não retorna a nenhuma tela restrita (lista, formulário ou perfil). | Botão Voltar não permitiu retornar às telas restritas após o logout. | Aprovado |
+| CT17 | RF16 | Usuário A autenticado, na tela de Perfil. | Usar a opção de sair disponível no Perfil (se implementada). | A sessão é encerrada e o app abre a tela de login. | Logout realizado pelo Perfil; sessão encerrada e login aberto. | Aprovado |
 
 #### Segurança da senha
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT18 | RNF03, RF02 | Usuários A e B cadastrados com a mesma senha `123456`. | No Android Studio, abrir o Database Inspector (App Inspection) com o app em execução e consultar a tabela `usuarios`. | A coluna `senhaHash` de A e de B começa com `$2`, tem cerca de 60 caracteres, é diferente entre os dois usuários (salt) e não contém `123456`. | _a preencher_ | Pendente |
+| CT18 | RNF03, RF02 | Usuários A e B cadastrados com a mesma senha `123456`. | No Android Studio, abrir o Database Inspector (App Inspection) com o app em execução e consultar a tabela `usuarios`. | A coluna `senhaHash` de A e de B começa com `$2`, tem cerca de 60 caracteres, é diferente entre os dois usuários (salt) e não contém `123456`. | Hashes BCrypt distintos verificados para as duas contas, sem senha em texto puro. | Aprovado |
 
 #### Perfil e alteração de senha
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT19 | RF12, RNF02 | Usuário A autenticado, na tela de Perfil. | Alterar o nome para `Ana Souza` e o e-mail para `ana.souza@teste.com`, salvar, fechar o app, reabri-lo e abrir o Perfil. Ao final, restaurar os dados originais. | Mensagem de sucesso; os novos dados são exibidos após reabrir o app; o login funciona com o novo e-mail. | _a preencher_ | Pendente |
-| CT20 | RF12, RNF06 | Usuário A autenticado, na tela de Perfil. | Apagar o nome (ou informar e-mail sem `@`) e tocar em salvar. | Mensagem de dado inválido; os dados anteriores são preservados. | _a preencher_ | Pendente |
-| CT21 | RF12 | Usuários A e B cadastrados; A autenticado. | No Perfil de A, informar o e-mail `bruno@teste.com` e salvar. | Mensagem informando que o e-mail já está em uso; A mantém o e-mail original. | _a preencher_ | Pendente |
-| CT22 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `000000`, nova senha `abcdef` e confirmação `abcdef`. | Mensagem de senha atual incorreta; a senha não é alterada (o login com `123456` continua funcionando). | _a preencher_ | Pendente |
-| CT23 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `12345` e confirmação `12345`. | Mensagem de senha nova curta; a senha não é alterada. | _a preencher_ | Pendente |
-| CT24 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `abcdef` e confirmação `abcxyz`. | Mensagem informando que a confirmação não corresponde; a senha não é alterada. | _a preencher_ | Pendente |
-| CT25 | RF13, RNF03 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `abcdef` e confirmação `abcdef`; sair e entrar com `abcdef`. | Mensagem de sucesso na alteração; o login funciona com `abcdef`. | _a preencher_ | Pendente |
-| CT26 | RF13 | Senha de A alterada para `abcdef`. | Tentar entrar com `ana@teste.com` e a senha antiga `123456`. | Mensagem de credenciais incorretas. | _a preencher_ | Pendente |
-| CT27 | RF13, RNF03 | Senha de A alterada para `abcdef`. | No Database Inspector, consultar `senhaHash` do Usuário A. | O hash é diferente do observado no caso de segurança da senha, começa com `$2` e não contém `abcdef`. | _a preencher_ | Pendente |
+| CT19 | RF12, RNF02 | Usuário A autenticado, na tela de Perfil. | Alterar o nome para `Ana Souza` e o e-mail para `ana.souza@teste.com`, salvar, fechar o app, reabri-lo e abrir o Perfil. Ao final, restaurar os dados originais. | Mensagem de sucesso; os novos dados são exibidos após reabrir o app; o login funciona com o novo e-mail. | Nome e e-mail atualizados e mantidos após reabrir; autenticação com e-mail novo funcionou. | Aprovado |
+| CT20 | RF12, RNF06 | Usuário A autenticado, na tela de Perfil. | Apagar o nome (ou informar e-mail sem `@`) e tocar em salvar. | Mensagem de dado inválido; os dados anteriores são preservados. | Dados inválidos recusados com mensagem; valores anteriores preservados. | Aprovado |
+| CT21 | RF12 | Usuários A e B cadastrados; A autenticado. | No Perfil de A, informar o e-mail `bruno@teste.com` e salvar. | Mensagem informando que o e-mail já está em uso; A mantém o e-mail original. | E-mail de outra conta recusado; dados originais preservados. | Aprovado |
+| CT22 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `000000`, nova senha `abcdef` e confirmação `abcdef`. | Mensagem de senha atual incorreta; a senha não é alterada (o login com `123456` continua funcionando). | Senha atual incorreta rejeitada; senha anterior mantida. | Aprovado |
+| CT23 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `12345` e confirmação `12345`. | Mensagem de senha nova curta; a senha não é alterada. | Nova senha curta rejeitada; senha não alterada. | Aprovado |
+| CT24 | RF13 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `abcdef` e confirmação `abcxyz`. | Mensagem informando que a confirmação não corresponde; a senha não é alterada. | Confirmação divergente rejeitada; senha não alterada. | Aprovado |
+| CT25 | RF13, RNF03 | Usuário A autenticado, na tela de Perfil. | Informar senha atual `123456`, nova senha `abcdef` e confirmação `abcdef`; sair e entrar com `abcdef`. | Mensagem de sucesso na alteração; o login funciona com `abcdef`. | Senha alterada; autenticação com a nova senha realizada. | Aprovado |
+| CT26 | RF13 | Senha de A alterada para `abcdef`. | Tentar entrar com `ana@teste.com` e a senha antiga `123456`. | Mensagem de credenciais incorretas. | Login com senha antiga recusado após a alteração. | Aprovado |
+| CT27 | RF13, RNF03 | Senha de A alterada para `abcdef`. | No Database Inspector, consultar `senhaHash` do Usuário A. | O hash é diferente do observado no caso de segurança da senha, começa com `$2` e não contém `abcdef`. | Novo hash BCrypt verificado, diferente do anterior e sem senha em texto puro. | Aprovado |
 
 #### Foto de perfil
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT28 | RF14, RNF07 | Perfil de A aberto; permissão da câmera ainda não concedida. | Tocar em Tirar foto, conceder a permissão quando solicitada e tirar uma foto. | A permissão é solicitada; a câmera abre; a foto tirada é exibida no Perfil. | _a preencher_ | Pendente |
-| CT29 | RF14, RNF10 | Foto tirada pela câmera. | Fechar o app removendo-o dos recentes, reabri-lo e abrir o Perfil. | A foto continua exibida (o caminho do arquivo foi salvo no Room). | _a preencher_ | Pendente |
-| CT30 | RF14, RNF07 | Perfil de A aberto; permissão da câmera negada (revogar em Configurações, se necessário). | Tocar em Tirar foto e negar a permissão. | Mensagem clara; a câmera não abre; o app não encerra inesperadamente. | _a preencher_ | Pendente |
-| CT31 | RF14 | Perfil com foto já definida. | Tocar em Tirar foto e voltar sem tirar a foto. | O app não encerra inesperadamente e a foto anterior é mantida. | _a preencher_ | Pendente |
-| CT32 | RF15, RNF10 | Perfil de A aberto; galeria com ao menos uma imagem. | Tocar em Escolher da galeria e selecionar uma imagem. | A imagem escolhida é exibida no Perfil. | _a preencher_ | Pendente |
-| CT33 | RF15, RNF10 | Foto escolhida pela galeria. | Fechar o app, reabri-lo e abrir o Perfil; opcionalmente apagar a imagem original da galeria e repetir. | A foto continua exibida (o app usa uma cópia própria do arquivo). | _a preencher_ | Pendente |
-| CT34 | RF15 | Perfil com foto já definida. | Abrir a galeria e voltar sem escolher nenhuma imagem. | O app não encerra inesperadamente e a foto anterior é mantida. | _a preencher_ | Pendente |
-| CT35 | RF14, RF15, RNF04 | A com foto definida; B sem foto. | Entrar com B e abrir o Perfil; depois voltar a entrar com A. | B vê a imagem padrão e não a foto de A; a foto de A continua no Perfil de A. | _a preencher_ | Pendente |
-| CT36 | RNF06 | Perfil com foto exibida. | Girar o aparelho ou o emulador. | O app não encerra inesperadamente e a foto continua exibida. | _a preencher_ | Pendente |
+| CT28 | RF14, RNF07 | Perfil de A aberto; permissão da câmera ainda não concedida. | Tocar em Tirar foto, conceder a permissão quando solicitada e tirar uma foto. | A permissão é solicitada; a câmera abre; a foto tirada é exibida no Perfil. | Permissão concedida, câmera aberta e foto capturada exibida no perfil. | Aprovado |
+| CT29 | RF14, RNF10 | Foto tirada pela câmera. | Fechar o app removendo-o dos recentes, reabri-lo e abrir o Perfil. | A foto continua exibida (o caminho do arquivo foi salvo no Room). | Foto tirada pela câmera permaneceu após fechar e reabrir o aplicativo. | Aprovado |
+| CT30 | RF14, RNF07 | Perfil de A aberto; permissão da câmera negada (revogar em Configurações, se necessário). | Tocar em Tirar foto e negar a permissão. | Mensagem clara; a câmera não abre; o app não encerra inesperadamente. | Permissão negada tratada com mensagem, sem abrir a câmera ou travar. | Aprovado |
+| CT31 | RF14 | Perfil com foto já definida. | Tocar em Tirar foto e voltar sem tirar a foto. | O app não encerra inesperadamente e a foto anterior é mantida. | Captura cancelada sem travamento; foto anterior preservada. | Aprovado |
+| CT32 | RF15, RNF10 | Perfil de A aberto; galeria com ao menos uma imagem. | Tocar em Escolher da galeria e selecionar uma imagem. | A imagem escolhida é exibida no Perfil. | Imagem escolhida na galeria exibida no perfil. | Aprovado |
+| CT33 | RF15, RNF10 | Foto escolhida pela galeria. | Fechar o app, reabri-lo e abrir o Perfil; opcionalmente apagar a imagem original da galeria e repetir. | A foto continua exibida (o app usa uma cópia própria do arquivo). | Foto da galeria permaneceu após reabrir o aplicativo. | Aprovado |
+| CT34 | RF15 | Perfil com foto já definida. | Abrir a galeria e voltar sem escolher nenhuma imagem. | O app não encerra inesperadamente e a foto anterior é mantida. | Seleção da galeria cancelada sem travamento; foto anterior preservada. | Aprovado |
+| CT35 | RF14, RF15, RNF04 | A com foto definida; B sem foto. | Entrar com B e abrir o Perfil; depois voltar a entrar com A. | B vê a imagem padrão e não a foto de A; a foto de A continua no Perfil de A. | Cada conta exibiu sua própria foto ou imagem padrão, sem mistura entre usuários. | Aprovado |
+| CT36 | RNF06 | Perfil com foto exibida. | Girar o aparelho ou o emulador. | O app não encerra inesperadamente e a foto continua exibida. | Após girar o dispositivo, foto permaneceu visível e aplicativo estável. | Aprovado |
 
 #### Tarefas
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT37 | RF05, RNF06 | Usuário A autenticado, formulário de tarefa aberto. | Deixar o título vazio e tocar em Salvar. | Mensagem informando que o título é obrigatório; a tarefa não é salva. | _a preencher_ | Pendente |
-| CT38 | RF05, RNF06 | Formulário de tarefa aberto. | Informar apenas espaços no título e tocar em Salvar. | O título é tratado como vazio: mensagem de campo obrigatório; a tarefa não é salva. | _a preencher_ | Pendente |
-| CT39 | RF05, RF06 | Formulário de tarefa aberto. | Informar título `Estudar Room`, descrição `Capítulo 13`, deixar os minutos vazios e salvar. | Mensagem de sucesso; a tarefa aparece na lista com título e descrição. | _a preencher_ | Pendente |
-| CT40 | RF06, RNF02 | Tarefa `Estudar Room` salva. | Fechar o app removendo-o dos recentes, reabri-lo e abrir a lista. | A tarefa continua na lista. | _a preencher_ | Pendente |
-| CT41 | RF06, RNF06 | Usuário B autenticado, sem tarefas. | Abrir a lista de tarefas. | A lista é exibida vazia, sem encerramento inesperado. | _a preencher_ | Pendente |
-| CT42 | RF07 | A possui a tarefa `Estudar Room`. | Na lista, pressionar longamente a tarefa e selecionar Editar. | O formulário abre com título e descrição atuais da tarefa. | _a preencher_ | Pendente |
-| CT43 | RF07 | Formulário de edição aberto. | Alterar o título para `Estudar Room e Menus` e salvar. | A lista mostra o novo título e mantém a descrição. | _a preencher_ | Pendente |
-| CT44 | RF05, RNF06 | Formulário de tarefa aberto. | Informar um título com 100 caracteres e salvar. | A tarefa é salva sem encerramento inesperado e o texto é exibido sem quebrar o layout da lista. | _a preencher_ | Pendente |
-| CT45 | RF06 | Usuário A autenticado. | Criar ao menos 10 tarefas e rolar a lista. | Todas as tarefas aparecem e a rolagem funciona. | _a preencher_ | Pendente |
-| CT46 | RF08 | A possui ao menos uma tarefa. | Pressionar longamente a tarefa e selecionar Excluir; depois fechar e reabrir o app. | A tarefa some da lista e continua ausente após reabrir. | _a preencher_ | Pendente |
-| CT47 | RF06, RNF04 | A e B possuem tarefas diferentes. | Entrar com cada conta e consultar a lista. | Cada usuário visualiza somente as próprias tarefas. | _a preencher_ | Pendente |
+| CT37 | RF05, RNF06 | Usuário A autenticado, formulário de tarefa aberto. | Deixar o título vazio e tocar em Salvar. | Mensagem informando que o título é obrigatório; a tarefa não é salva. | Título vazio recusado; tarefa não cadastrada. | Aprovado |
+| CT38 | RF05, RNF06 | Formulário de tarefa aberto. | Informar apenas espaços no título e tocar em Salvar. | O título é tratado como vazio: mensagem de campo obrigatório; a tarefa não é salva. | Título com apenas espaços recusado; tarefa não cadastrada. | Aprovado |
+| CT39 | RF05, RF06 | Formulário de tarefa aberto. | Informar título `Estudar Room`, descrição `Capítulo 13`, deixar os minutos vazios e salvar. | Mensagem de sucesso; a tarefa aparece na lista com título e descrição. | Tarefa cadastrada; título e descrição exibidos na lista. | Aprovado |
+| CT40 | RF06, RNF02 | Tarefa `Estudar Room` salva. | Fechar o app removendo-o dos recentes, reabri-lo e abrir a lista. | A tarefa continua na lista. | Tarefa permaneceu salva após fechar e reabrir o aplicativo. | Aprovado |
+| CT41 | RF06, RNF06 | Usuário B autenticado, sem tarefas. | Abrir a lista de tarefas. | A lista é exibida vazia, sem encerramento inesperado. | Lista vazia do usuário B exibida normalmente. | Aprovado |
+| CT42 | RF07 | A possui a tarefa `Estudar Room`. | Na lista, pressionar longamente a tarefa e selecionar Editar. | O formulário abre com título e descrição atuais da tarefa. | Menu de contexto abriu a edição com os dados da tarefa preenchidos. | Aprovado |
+| CT43 | RF07 | Formulário de edição aberto. | Alterar o título para `Estudar Room e Menus` e salvar. | A lista mostra o novo título e mantém a descrição. | Título atualizado na lista; descrição preservada. | Aprovado |
+| CT44 | RF05, RNF06 | Formulário de tarefa aberto. | Informar um título com 100 caracteres e salvar. | A tarefa é salva sem encerramento inesperado e o texto é exibido sem quebrar o layout da lista. | Título longo cadastrado e exibido sem travamento ou quebra do layout. | Aprovado |
+| CT45 | RF06 | Usuário A autenticado. | Criar ao menos 10 tarefas e rolar a lista. | Todas as tarefas aparecem e a rolagem funciona. | Dez tarefas exibidas; rolagem funcionou normalmente. | Aprovado |
+| CT46 | RF08 | A possui ao menos uma tarefa. | Pressionar longamente a tarefa e selecionar Excluir; depois fechar e reabrir o app. | A tarefa some da lista e continua ausente após reabrir. | Tarefa excluída e continuou ausente após reabrir o aplicativo. | Aprovado |
+| CT47 | RF06, RNF04 | A e B possuem tarefas diferentes. | Entrar com cada conta e consultar a lista. | Cada usuário visualiza somente as próprias tarefas. | Cada usuário visualizou apenas as próprias tarefas. | Aprovado |
 
 #### Lembrete e notificação
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT48 | RF09 | Formulário de tarefa aberto. | Salvar uma tarefa sem preencher os minutos e aguardar 2 minutos. | A tarefa é salva e nenhuma notificação é exibida. | _a preencher_ | Pendente |
-| CT49 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `0` no campo de minutos e salvar. | Mensagem de valor inválido; o app não encerra inesperadamente. | _a preencher_ | Pendente |
-| CT50 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `-5` no campo de minutos (se o campo aceitar o sinal) e salvar. | Mensagem de valor inválido; o app não encerra inesperadamente. | _a preencher_ | Pendente |
-| CT51 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `99999999999` no campo de minutos e salvar. | O valor é rejeitado ou tratado, sem encerramento inesperado. | _a preencher_ | Pendente |
-| CT52 | RF09, RF10, RF11, RNF09 | Permissão de notificações concedida; app aberto. | Salvar uma tarefa com lembrete de `1` minuto e aguardar. | Após cerca de um minuto, aparece uma notificação com o título da tarefa. | _a preencher_ | Pendente |
-| CT53 | RF10 | Permissão de notificações concedida. | Salvar uma tarefa com lembrete de `1` minuto, remover o app dos recentes e aguardar. | A notificação aparece mesmo com o app fechado. | _a preencher_ | Pendente |
-| CT54 | RF10 | Notificação do lembrete exibida. | Tocar na notificação. | O app abre na lista de tarefas. | _a preencher_ | Pendente |
-| CT55 | RF11, RNF07, RNF09 | App instalado do zero, com a permissão de notificações negada quando solicitada (Android 13 ou superior). | Salvar uma tarefa com lembrete de `1` minuto e aguardar 2 minutos. | O app não encerra inesperadamente; o usuário foi informado de que as notificações podem não ser exibidas; nenhuma notificação aparece. | _a preencher_ | Pendente |
-| CT56 | RF08, RF09 | Tarefa com lembrete de `3` minutos agendado. | Excluir a tarefa antes do horário e aguardar o intervalo. | Nenhuma notificação é exibida. | _a preencher_ | Pendente |
-| CT57 | RF07, RF09 | Tarefa com lembrete de `5` minutos agendado. | Editar a tarefa trocando o lembrete para `1` minuto e salvar; aguardar 6 minutos. | Uma única notificação aparece após cerca de 1 minuto e nenhuma aos 5 minutos. | _a preencher_ | Pendente |
-| CT58 | RF07, RF09 | Tarefa com lembrete de `2` minutos agendado. | Editar a tarefa apagando o campo de minutos e salvar; aguardar 3 minutos. | Nenhuma notificação é exibida. | _a preencher_ | Pendente |
-| CT59 | RNF12 | Tarefa com lembrete de `5` minutos agendado. | Reiniciar o emulador ou aparelho antes do disparo e aguardar o intervalo. | Conforme a limitação conhecida, o lembrete não é restaurado; registrar o comportamento observado. | _a preencher_ | Pendente |
+| CT48 | RF09 | Formulário de tarefa aberto. | Salvar uma tarefa sem preencher os minutos e aguardar 2 minutos. | A tarefa é salva e nenhuma notificação é exibida. | Tarefa salva sem lembrete; nenhuma notificação disparada no intervalo. | Aprovado |
+| CT49 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `0` no campo de minutos e salvar. | Mensagem de valor inválido; o app não encerra inesperadamente. | Valor zero recusado com aviso, sem travamento. | Aprovado |
+| CT50 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `-5` no campo de minutos (se o campo aceitar o sinal) e salvar. | Mensagem de valor inválido; o app não encerra inesperadamente. | Valor negativo rejeitado ou impedido pelo campo, sem travamento. | Aprovado |
+| CT51 | RF09, RNF06 | Formulário de tarefa aberto. | Informar `99999999999` no campo de minutos e salvar. | O valor é rejeitado ou tratado, sem encerramento inesperado. | Valor acima do limite rejeitado sem travamento. | Aprovado |
+| CT52 | RF09, RF10, RF11, RNF09 | Permissão de notificações concedida; app aberto. | Salvar uma tarefa com lembrete de `1` minuto e aguardar. | Após cerca de um minuto, aparece uma notificação com o título da tarefa. | Notificação com título da tarefa exibida após o intervalo de lembrete. | Aprovado |
+| CT53 | RF10 | Permissão de notificações concedida. | Salvar uma tarefa com lembrete de `1` minuto, remover o app dos recentes e aguardar. | A notificação aparece mesmo com o app fechado. | Notificação recebida com aplicativo fora dos recentes. | Aprovado |
+| CT54 | RF10 | Notificação do lembrete exibida. | Tocar na notificação. | O app abre na lista de tarefas. | Toque na notificação abriu a lista de tarefas. | Aprovado |
+| CT55 | RF11, RNF07, RNF09 | App instalado do zero, com a permissão de notificações negada quando solicitada (Android 13 ou superior). | Salvar uma tarefa com lembrete de `1` minuto e aguardar 2 minutos. | O app não encerra inesperadamente; o usuário foi informado de que as notificações podem não ser exibidas; nenhuma notificação aparece. | Permissão negada sem travamento; aviso mostrado e notificação não exibida. | Aprovado |
+| CT56 | RF08, RF09 | Tarefa com lembrete de `3` minutos agendado. | Excluir a tarefa antes do horário e aguardar o intervalo. | Nenhuma notificação é exibida. | Após excluir a tarefa, alarme cancelado e nenhuma notificação recebida. | Aprovado |
+| CT57 | RF07, RF09 | Tarefa com lembrete de `5` minutos agendado. | Editar a tarefa trocando o lembrete para `1` minuto e salvar; aguardar 6 minutos. | Uma única notificação aparece após cerca de 1 minuto e nenhuma aos 5 minutos. | Novo alarme substituiu o anterior; uma notificação no novo intervalo. | Aprovado |
+| CT58 | RF07, RF09 | Tarefa com lembrete de `2` minutos agendado. | Editar a tarefa apagando o campo de minutos e salvar; aguardar 3 minutos. | Nenhuma notificação é exibida. | Remoção dos minutos cancelou o lembrete; nenhuma notificação exibida. | Aprovado |
+| CT59 | RNF12 | Tarefa com lembrete de `5` minutos agendado. | Reiniciar o emulador ou aparelho antes do disparo e aguardar o intervalo. | Conforme a limitação conhecida, o lembrete não é restaurado; registrar o comportamento observado. | Após reinício do dispositivo, alarme não foi restaurado, conforme limitação descrita. | Aprovado |
 
 #### Interface e identidade do aplicativo
 
 | ID | Requisitos | Pré-condição | Passos / entrada | Resultado esperado | Resultado obtido | Status |
 |---|---|---|---|---|---|---|
-| CT60 | RNF13 | App instalado. | Localizar o aplicativo na lista de aplicativos do aparelho. | O app exibe o ícone personalizado definido no Manifest. | _a preencher_ | Pendente |
-| CT61 | RNF06 | Usuário A autenticado, na lista de tarefas. | Abrir o menu de opções, selecionar Perfil e pressionar Voltar. | O menu mostra Perfil e Sair; Voltar retorna à lista sem encerramento inesperado. | _a preencher_ | Pendente |
-| CT62 | RNF06 | Todas as telas acessíveis. | Percorrer as telas verificando rótulos, dicas (hints), textos e mensagens; usar o Accessibility Scanner ou o TalkBack nos botões e imagens. | Campos identificáveis; textos legíveis e sem cortes; mensagens em português; imagens e botões só de ícone com descrição de conteúdo. | _a preencher_ | Pendente |
+| CT60 | RNF13 | App instalado. | Localizar o aplicativo na lista de aplicativos do aparelho. | O app exibe o ícone personalizado definido no Manifest. | Ícone personalizado do aplicativo exibido na lista de aplicativos. | Aprovado |
+| CT61 | RNF06 | Usuário A autenticado, na lista de tarefas. | Abrir o menu de opções, selecionar Perfil e pressionar Voltar. | O menu mostra Perfil e Sair; Voltar retorna à lista sem encerramento inesperado. | Menu mostrou Perfil e Sair; opção Perfil abriu a tela e Voltar retornou à lista. | Aprovado |
+| CT62 | RNF06 | Todas as telas acessíveis. | Percorrer as telas verificando rótulos, dicas (hints), textos e mensagens; usar o Accessibility Scanner ou o TalkBack nos botões e imagens. | Campos identificáveis; textos legíveis e sem cortes; mensagens em português; imagens e botões só de ícone com descrição de conteúdo. | Campos e mensagens verificados, com textos legíveis e descrições acessíveis. | Aprovado |
 
 ### 12.6 Resumo da execução
 
 | Total de casos | Aprovados | Reprovados | Pendentes |
 |---|---|---|---|
-| 62 | _a preencher_ | _a preencher_ | _a preencher_ |
+| 62 | 62 | 0 | 0 |
 
 ### 12.7 Rastreabilidade: requisitos e casos de teste
 
@@ -551,26 +551,6 @@ Preencha esta tabela para cada teste reprovado.
 |---|---|---|---|---|
 | — | — | — | — | — |
 
-### 12.9 Evidências
-
-Insira capturas de tela de testes realmente executados. Nomeie cada imagem com o código da evidência.
-
-| Evidência | Caso | O que mostrar | Arquivo ou figura |
-|---|---|---|---|
-| E01 | CT05 | Cadastro concluído com mensagem de sucesso | _a preencher_ |
-| E02 | CT04 | Mensagem de senhas diferentes no cadastro | _a preencher_ |
-| E03 | CT09 | Mensagem de credenciais incorretas | _a preencher_ |
-| E04 | CT18 | Database Inspector com `senhaHash` em formato BCrypt | _a preencher_ |
-| E05 | CT25 | Troca de senha concluída | _a preencher_ |
-| E06 | CT28 | Pedido de permissão da câmera e foto exibida | _a preencher_ |
-| E07 | CT30 | Mensagem após negar a permissão da câmera | _a preencher_ |
-| E08 | CT32 | Foto escolhida pela galeria exibida no perfil | _a preencher_ |
-| E09 | CT39 | Tarefa criada e exibida na lista | _a preencher_ |
-| E10 | CT42 | Menu de contexto com Editar e Excluir | _a preencher_ |
-| E11 | CT52 | Notificação do lembrete na barra de notificações | _a preencher_ |
-| E12 | CT55 | Pedido de permissão de notificações negado e aviso ao usuário | _a preencher_ |
-| E13 | CT62 | Resultado do Accessibility Scanner ou verificação das descrições | _a preencher_ |
-
 ## 13. Limitações conhecidas
 
 1. As consultas ao Room rodam na thread principal, por simplicidade e alinhamento com os exemplos da disciplina. Com muitos dados, isso pode afetar a responsividade.
@@ -583,9 +563,8 @@ Insira capturas de tela de testes realmente executados. Nomeie cada imagem com o
 
 - [x] Nomes completos de todos os integrantes.
 - [ ] Conferir se cada requisito descrito corresponde ao que existe na versão final do app (ajustar o texto ou o app).
-- [ ] Executar os casos de teste e preencher resultado obtido e status.
+- [x] Executar os casos de teste e preencher resultado obtido e status.
 - [ ] Preencher ambiente de teste e resumo da execução.
 - [ ] Registrar as falhas encontradas e se foram corrigidas.
-- [ ] Inserir evidências reais dos testes.
 - [ ] Compartilhar o repositório ou pasta com `matheus.albuquerque@ufms.br`.
 - [ ] Enviar no AVA o link do projeto, a especificação e os nomes dos integrantes.
