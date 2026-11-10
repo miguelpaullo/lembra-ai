@@ -1,12 +1,13 @@
 # Especificação de Requisitos e Plano de Testes — Lembra Aí
 
-| | |
-|---|---|
-| **Projeto** | Lembra Aí — Lista de Tarefas com Lembretes |
-| **Disciplina** | Programação para Dispositivos Móveis — Avaliação 3 |
+|                 | |
+|-----------------|---|
+| **Projeto**     | Lembra Aí — Lista de Tarefas com Lembretes |
+| **Disciplina**  | Programação para Dispositivos Móveis — Avaliação 3 |
 | **Instituição** | Universidade Federal de Mato Grosso do Sul (UFMS) |
-| **Data** | 09/11/2026 |
-| **Plataforma** | Android nativo, Java (Views) |
+| **Data**        | 09/11/2026 |
+| **Plataforma**  | Android nativo, Java (Views) |
+| **Repositório** | [https://github.com/miguelpaullo/lembra-ai](https://github.com/miguelpaullo/lembra-ai) |
 
 ## 1. Identificação
 
