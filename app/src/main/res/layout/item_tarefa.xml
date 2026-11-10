@@ -1,24 +1,39 @@
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
     android:padding="12dp">
 
-    <TextView
-        android:id="@+id/txtTituloTarefa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Título da tarefa"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_tarefa"
+        android:contentDescription="Ícone de tarefa"
+        android:layout_marginEnd="12dp" />
 
-    <TextView
-        android:id="@+id/txtDescricaoTarefa"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Descrição da tarefa"
-        android:textSize="14sp" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTituloTarefa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título da tarefa"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDescricaoTarefa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição da tarefa"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

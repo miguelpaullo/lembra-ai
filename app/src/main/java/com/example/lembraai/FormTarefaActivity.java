@@ -47,6 +47,11 @@ public class FormTarefaActivity extends AppCompatActivity {
         edtDescricaoTarefa = findViewById(R.id.edtDescricaoTarefa);
         btnSalvarTarefa = findViewById(R.id.btnSalvarTarefa);
         edtLembreteMinutos = findViewById(R.id.edtLembreteMinutos);
+        Button btnVoltar = findViewById(R.id.btnVoltar);
+
+        btnVoltar.setOnClickListener(v -> {
+            finish();
+        });
 
         // Abre o banco de dados
         banco = Room.databaseBuilder(

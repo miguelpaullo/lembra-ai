@@ -10,7 +10,8 @@
         android:text="Dados da tarefa"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/edtTituloTarefa"
@@ -41,5 +42,12 @@
         android:layout_height="wrap_content"
         android:text="Salvar tarefa"
         android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>
