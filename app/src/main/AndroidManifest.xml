@@ -13,24 +13,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LembraAi">
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
 
+        <!-- Splash: será a primeira tela aberta pelo Android -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
         <activity
             android:name=".CadastroActivity"
             android:exported="false" />
+
         <activity
             android:name=".ListaActivity"
             android:exported="false" />
+
         <activity
             android:name=".FormTarefaActivity"
             android:exported="false" />
@@ -39,6 +49,7 @@
             android:name=".LembreteReceiver"
             android:enabled="true"
             android:exported="false" />
+
     </application>
 
 </manifest>
