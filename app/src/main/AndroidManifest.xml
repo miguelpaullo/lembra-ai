@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissões do aplicativo -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LembraAi">
 
+        <!-- Activity principal -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
 
-        <!-- Splash: será a primeira tela aberta pelo Android -->
+        <!-- Splash: tela inicial do aplicativo -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -29,26 +32,49 @@
             </intent-filter>
         </activity>
 
+        <!-- Login -->
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
 
+        <!-- Cadastro -->
         <activity
             android:name=".CadastroActivity"
             android:exported="false" />
 
+        <!-- Lista de tarefas -->
         <activity
             android:name=".ListaActivity"
             android:exported="false" />
 
+        <!-- Formulário de tarefas -->
         <activity
             android:name=".FormTarefaActivity"
             android:exported="false" />
 
+        <!-- Perfil do usuário -->
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+
+        <!-- Recebe os alarmes e exibe notificações -->
         <receiver
             android:name=".LembreteReceiver"
             android:enabled="true"
             android:exported="false" />
+
+        <!-- Compartilhamento seguro de fotos com a câmera -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
 
     </application>
 

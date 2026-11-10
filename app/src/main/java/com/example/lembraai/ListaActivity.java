@@ -210,8 +210,19 @@ public class ListaActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Verifica se o usuário escolheu Perfil
+        if (item.getItemId() == R.id.action_perfil) {
+
+            Intent intent = new Intent(ListaActivity.this,
+                    PerfilActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
 
         // Verifica se o usuário escolheu Sair
         if (item.getItemId() == R.id.action_sair) {
@@ -223,7 +234,7 @@ public class ListaActivity extends AppCompatActivity {
             Intent intent = new Intent(ListaActivity.this,
                     LoginActivity.class);
 
-            // Impede que o usuário volte para a lista pelo botão Voltar
+            // Impede voltar para a lista pelo botão Voltar
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -234,6 +245,7 @@ public class ListaActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
     private void criarCanalNotificacao() {
 

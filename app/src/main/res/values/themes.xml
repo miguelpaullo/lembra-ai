@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.LembraAi" parent="Theme.Material3.DayNight" />
+    <style name="Base.Theme.LembraAi" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
     <style name="Theme.LembraAi" parent="Base.Theme.LembraAi" />
 
     <!-- Splash oficial, sem atraso artificial (fora das aulas; exigida). -->

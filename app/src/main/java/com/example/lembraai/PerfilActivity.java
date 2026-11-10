@@ -40,6 +40,7 @@ public class PerfilActivity extends AppCompatActivity {
     private ActivityResultLauncher<String> permissaoCamera;
     private ActivityResultLauncher<Uri> takePictureLauncher;
     private ActivityResultLauncher<String> galeriaLauncher;
+    private Button btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class PerfilActivity extends AppCompatActivity {
         btnTirarFoto = findViewById(R.id.btnTirarFoto);
         btnGaleria = findViewById(R.id.btnGaleria);
         imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
+        btnVoltar = findViewById(R.id.btnVoltar);
 
         banco = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,
                 "lembraai.db").allowMainThreadQueries().build();
@@ -83,6 +85,12 @@ public class PerfilActivity extends AppCompatActivity {
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) { salvarDados(); }
+        });
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
         btnAlterarSenha.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) { alterarSenha(); }
