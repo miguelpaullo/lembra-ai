@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Meu perfil" android:textSize="26sp" android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+        <ImageView android:id="@+id/imgFotoPerfil" android:layout_width="150dp"
+            android:layout_height="150dp" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" android:src="@android:drawable/ic_menu_gallery"
+            android:scaleType="centerCrop" android:contentDescription="Foto de perfil" />
+        <Button android:id="@+id/btnTirarFoto" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Tirar foto" />
+        <Button android:id="@+id/btnGaleria" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Escolher da galeria"
+            android:layout_marginBottom="20dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Dados pessoais" android:textSize="20sp" android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+        <EditText android:id="@+id/edtPerfilNome" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Nome"
+            android:inputType="textPersonName" />
+        <EditText android:id="@+id/edtPerfilEmail" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+        <Button android:id="@+id/btnSalvarPerfil" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Salvar dados" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Alterar senha" android:textSize="20sp" android:textStyle="bold"
+            android:layout_marginTop="32dp" />
+        <EditText android:id="@+id/edtSenhaAtual" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Senha atual"
+            android:inputType="textPassword" />
+        <EditText android:id="@+id/edtNovaSenha" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Nova senha"
+            android:inputType="textPassword" />
+        <EditText android:id="@+id/edtConfirmarNovaSenha" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Confirmar nova senha"
+            android:inputType="textPassword" />
+        <Button android:id="@+id/btnAlterarSenha" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Alterar senha" />
+        <Button android:id="@+id/btnSairPerfil" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Sair da conta"
+            android:layout_marginTop="32dp" />
+    </LinearLayout>
+</ScrollView>
