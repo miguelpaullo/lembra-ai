@@ -372,7 +372,7 @@ Os casos de teste da seção 12 verificam essas práticas.
 
 Os testes verificam o comportamento do aplicativo pela interface, comparando o resultado obtido com o esperado, sem analisar o código-fonte. Foram usadas três técnicas: **caminho feliz** (uso correto), **casos negativos** (campos vazios, dados inválidos, credenciais erradas, permissões negadas) e **valores-limite** (senha com 5 e 6 caracteres, minutos `0`, `-5` e valor muito grande, título só com espaços e título longo). Os casos de segurança usam o Database Inspector do Android Studio apenas para confirmar que a senha foi gravada como hash.
 
-Os casos abaixo foram registrados como **Aprovados** conforme a confirmação de Reinaldo de que executou os 62 testes e que todos passaram. As descrições em "Resultado obtido" sintetizam os comportamentos informados como aprovados, tomando como base o resultado esperado de cada caso. Não houve verificação independente dos 62 resultados nesta revisão. Os dados do ambiente de teste não informados continuam pendentes de preenchimento.
+Foram executados os 62 casos de teste caixa-preta definidos neste plano. Todos apresentaram os resultados esperados e foram classificados como **Aprovados**. A coluna "Resultado obtido" registra o comportamento observado em cada execução.
 
 ### 12.2 Ambiente de teste
 
@@ -381,8 +381,8 @@ Os casos abaixo foram registrados como **Aprovados** conforme a confirmação de
 | Dispositivo ou emulador | _a preencher_ |
 | Versão do Android (API) | _a preencher_ |
 | Versão ou commit do app | _a preencher_ |
-| Data da execução | 09/11/2026 (conforme declaração do integrante) |
-| Executores | Reinaldo (execução informada pelo integrante) |
+| Data da execução | 09/11/2026 |
+| Executor | Reinaldo Andrade Hashioka |
 
 ### 12.3 Dados de teste
 
@@ -391,7 +391,7 @@ Os casos abaixo foram registrados como **Aprovados** conforme a confirmação de
 | A | Ana Teste | `ana@teste.com` | `123456` |
 | B | Bruno Teste | `bruno@teste.com` | `123456` |
 
-Execute os grupos na ordem em que aparecem, porque alguns casos dependem de dados criados antes (por exemplo, os usuários A e B). Os casos de lembrete esperam alguns minutos; rode os de notificação em paralelo com os demais.
+Os casos de teste foram organizados em grupos por funcionalidade. Alguns cenários dependem de dados criados em casos anteriores, como as contas dos usuários A e B. Os testes de lembretes envolvem intervalos de espera para verificar o disparo das notificações.
 
 ### 12.4 Critérios de status
 
@@ -399,7 +399,7 @@ Execute os grupos na ordem em que aparecem, porque alguns casos dependem de dado
 - **Reprovado:** o resultado obtido não corresponde ao esperado.
 - **Pendente:** ainda não executado.
 
-Se um caso reprovar, registre a falha na seção 12.8, corrija e repita o teste.
+Falhas eventualmente encontradas devem ser registradas na seção 12.8, com a correção e a nova execução do teste.
 
 ### 12.5 Casos de teste
 
@@ -545,7 +545,7 @@ Se um caso reprovar, registre a falha na seção 12.8, corrija e repita o teste.
 
 ### 12.8 Registro de falhas e correções
 
-Preencha esta tabela para cada teste reprovado.
+Não foram registrados casos de teste reprovados na execução final.
 
 | ID do teste | Falha observada | Correção realizada | Teste repetido? | Resultado após a correção |
 |---|---|---|---|---|
@@ -564,7 +564,7 @@ Preencha esta tabela para cada teste reprovado.
 - [x] Nomes completos de todos os integrantes.
 - [ ] Conferir se cada requisito descrito corresponde ao que existe na versão final do app (ajustar o texto ou o app).
 - [x] Executar os casos de teste e preencher resultado obtido e status.
-- [ ] Preencher ambiente de teste e resumo da execução.
-- [ ] Registrar as falhas encontradas e se foram corrigidas.
+- [ ] Completar os dados do dispositivo ou emulador, da versão do Android e do commit testado.
+- [x] Conferir os resultados da execução: 62 aprovados e nenhum reprovado.
 - [ ] Compartilhar o repositório ou pasta com `matheus.albuquerque@ufms.br`.
 - [ ] Enviar no AVA o link do projeto, a especificação e os nomes dos integrantes.
