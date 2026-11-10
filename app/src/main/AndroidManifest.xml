@@ -35,12 +35,14 @@
         <!-- Login -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.LembraAi.SemActionBar"/>
 
         <!-- Cadastro -->
         <activity
             android:name=".CadastroActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.LembraAi.SemActionBar"/>
 
         <!-- Lista de tarefas -->
         <activity
