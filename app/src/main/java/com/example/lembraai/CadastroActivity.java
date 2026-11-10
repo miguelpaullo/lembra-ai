@@ -21,7 +21,6 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText edtSenha;
     private EditText edtConfirmarSenha;
     private Button btnCadastrar;
-
     private AppDatabase banco;
 
     @Override
@@ -35,6 +34,11 @@ public class CadastroActivity extends AppCompatActivity {
         edtSenha = findViewById(R.id.edtSenha);
         edtConfirmarSenha = findViewById(R.id.edtConfirmarSenha);
         btnCadastrar = findViewById(R.id.btnCadastrar);
+        Button btnCancelar = findViewById(R.id.btnCancelar);
+
+        btnCancelar.setOnClickListener(v -> {
+            finish();
+        });
 
         // Abre o banco de dados Room
         banco = Room.databaseBuilder(
